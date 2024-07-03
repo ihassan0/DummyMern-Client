@@ -4,6 +4,7 @@ import axios from 'axios'
 export default function Login() {
   const [email, SetEmail] = useState()
   const[password, SetPassword] = useState()
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate()
   const handleformSubmit = (e) => {
       e.preventDefault();
@@ -16,9 +17,14 @@ export default function Login() {
         const parsedData = JSON.parse(result.config.data);
        const email = parsedData.email;
        localStorage.setItem('userEmail', email)
+       navigate('/')
     })
+    .catch(error => {
+        setErrorMessage(error.response.data.errors);
+        console.error(error.response.data.errors);
+      });
     //   console.log(localStorage.getItem('authToken'))
-      navigate('/')
+     
   }
   return (
     <div>
@@ -28,6 +34,7 @@ export default function Login() {
                     <div className="card my-5">
                         <div className="card-body">
                             <h3 className="card-title text-center">Login</h3>
+                            {errorMessage && <p className='text-danger'>{errorMessage}</p>}
                             <form onSubmit={handleformSubmit}>
                                 <div className="form-group">
                                     <label htmlFor="email">Email address</label>

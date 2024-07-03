@@ -15,8 +15,10 @@ export default function Signup() {
         const response = axios.post(`https://dummy-mern-server.vercel.app/api/createUser`,{
             name, email, location, password
         })
-        .then(result => console.log(result))
-        navigate('/')
+        .then(result => {console.log(result)
+            navigate('/login')
+        })
+        
     }
   return (
     <>
@@ -29,25 +31,25 @@ export default function Signup() {
                             <form onSubmit={handleformSubmit}>
                                 <div className="form-group">
                                     <label htmlFor="name">Name</label>
-                                    <input type="text" className="form-control"name='name' id="name" placeholder="Enter your name"
+                                    <input type="text" className="form-control"name='name' required  id="name" placeholder="Enter your name"
                                     onChange={ (e) => SetName(e.target.value) } 
                                     />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">Email address</label>
-                                    <input type="email" className="form-control" id="email" placeholder="Enter your email"
+                                    <input type="email" className="form-control" id="email" required  placeholder="Enter your email"
                                     onChange={ (e) => SetEmail(e.target.value)}
                                      />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="name">Location</label>
-                                    <input type="text" className="form-control" id="location" placeholder="Enter your Location"
+                                    <input type="text" className="form-control" id="location" required  placeholder="Enter your Location"
                                     onChange={ (e) => SetLocation(e.target.value)}
                                     />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="password">Password</label>
-                                    <input type="password" className="form-control" id="password" placeholder="Enter your password"
+                                    <input type="password" className="form-control" id="password"  required placeholder="Enter your password"
                                     onChange={ (e) => SetPassword(e.target.value)}
                                     />
                                 </div>
