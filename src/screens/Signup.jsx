@@ -12,7 +12,7 @@ export default function Signup() {
     const navigate = useNavigate()
     const handleformSubmit = (e) => {
         e.preventDefault();
-        const response = axios.post(`${window.location.origin}/api/createUser`,{
+        const response = axios.post(`https://dummy-mern-server.vercel.app/api/createUser`,{
             name, email, location, password
         })
         .then(result => console.log(result))

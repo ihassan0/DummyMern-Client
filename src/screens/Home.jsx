@@ -12,7 +12,7 @@ export default function Home() {
  const [cats, setCat] = useState([])
  const [search, setSearchValue] = useState("")
  useEffect(()=> {
-  axios.post(`${window.location.origin}/foods`)
+  axios.post(`https://dummy-mern-server.vercel.app/foods`)
   .then(result => {
     setFood(result.data.foodItems);
      setCat(result.data.foodCategories);

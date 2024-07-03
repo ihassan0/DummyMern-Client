@@ -7,7 +7,7 @@ export default function Login() {
   const navigate = useNavigate()
   const handleformSubmit = (e) => {
       e.preventDefault();
-      const response = axios.post(`${window.location.origin}/api/loginUser`,{
+      const response = axios.post(`https://dummy-mern-server.vercel.app/api/loginUser`,{
           email, password
       })
       .then(result => {
