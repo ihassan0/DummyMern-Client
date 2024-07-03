@@ -22,7 +22,7 @@ export default function Navbar() {
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav me-auto mb-2">
       <li className="nav-item active fs-5">
-        <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
+        <Link className="nav-link" to="/">Home</Link>
       </li>
       {(localStorage.getItem('authToken'))?
        <li className="nav-item active fs-5">
