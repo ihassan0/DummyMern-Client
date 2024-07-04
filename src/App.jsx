@@ -11,6 +11,8 @@ import Login from './screens/Login';
 import Signup from './screens/Signup';
 import { CartProvider } from './components/ContextReducer';
 import MyOrder from './screens/MyOrder';
+import StripePage from './screens/Stripe';
+
 // import CartProvider from './components/ContextReducer';
 CartProvider
 
@@ -26,7 +28,7 @@ function App() {
       <Route exact path='/myOrder' element={<MyOrder/>} />
      </Routes>
   </Router>
-  // </CartProvider>
+ </CartProvider>
   )
 }
 
