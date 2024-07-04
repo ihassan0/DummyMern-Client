@@ -89,7 +89,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart, useDispatchCart } from '../components/ContextReducer';
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('pk_test_51Lk41oCCH7KhoNuOCjUAYTKBP7E5sodzeRhw78so3WiEwJOYYfRhh23I3LRXWlCswblmc3Jd4MuwlbLPZmokP0p500QXv06aCm'); // replace with your Stripe publishable key
+const stripePromise = loadStripe('pk_test_51Lk41oCCH7KhoNuOCjUAYTKBP7E5sodzeRhw78so3WiEwJOYYfRhh23I3LRXWlCswblmc3Jd4MuwlbLPZmokP0p500QXv06aCm');
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -106,7 +106,7 @@ export default function Cart() {
 
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
-    let response = await fetch(`http://localhost:5000/api/create-checkout-session`, {
+    let response = await fetch(`https://dummy-mern-server.vercel.app/create-checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
