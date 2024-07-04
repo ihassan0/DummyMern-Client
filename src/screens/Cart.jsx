@@ -106,7 +106,7 @@ export default function Cart() {
 
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
-    let response = await fetch(`https://dummy-mern-server.vercel.app/create-checkout-session`, {
+    let response = await fetch(`https://dummy-mern-server.vercel.app/api/create-checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
