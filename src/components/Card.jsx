@@ -74,7 +74,7 @@ export default function Card(props) {
       </select>
     </div>
     <div className='d-inline'>
-      Rs:{finalPrice}/-
+      Rs:{finalPrice} $/-
     </div>
     <button  className="btn btn-primary" onClick={handleaddtocart}>Add to cart</button>
   </div>
