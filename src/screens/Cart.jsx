@@ -106,21 +106,33 @@ export default function Cart() {
 
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
+    const orderData = {
+        order_data: data,
+        email: userEmail,
+        order_date: new Date().toDateString()
+    };
+
+    // First API call to create checkout session
     let response = await fetch(`https://dummy-mern-server.vercel.app/api/create-checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        order_data: data,
-        email: userEmail,
-        order_date: new Date().toDateString()
-      })
+      body: JSON.stringify(orderData)
     });
 
     const session = await response.json();
 
     if (session.id) {
+      // Second API call to send order data
+      await fetch(`https://dummy-mern-server.vercel.app/api/orderData`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderData)
+      });
+
       const stripe = await stripePromise;
       await stripe.redirectToCheckout({ sessionId: session.id });
     }
@@ -129,7 +141,7 @@ export default function Cart() {
   let totalPrice = data.reduce((total, food) => total + food.price, 0);
   return (
     <div>
-      {console.log(data)}
+      {/* {console.log(data)} */}
       <div className='container m-auto mt-5 table-responsive table-responsive-sm table-responsive-md'>
         <table className='table table-hover'>
           <thead className='text-success fs-4'>
