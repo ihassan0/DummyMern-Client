@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatchCart, useCart } from './ContextReducer';
+import { useNavigate } from 'react-router-dom'
 
 export default function Card(props) {
   // console.log(props);
   const priceRef = useRef()
   let dispatch = useDispatchCart()
+  const navigate = useNavigate()
   let foodItem = props.foodItem;
   let data = useCart()
   const [size, setSize] = useState("")
@@ -12,6 +14,10 @@ export default function Card(props) {
   let options = props.options;
   let priceOptions = Object.keys(options);
   const handleaddtocart = async () => {
+    let authToken = localStorage.getItem('authToken')
+    if(!authToken) {
+    navigate("/login")
+    }
     let food = []
     for (const item of data) {
       if (item.id === foodItem._id) {
